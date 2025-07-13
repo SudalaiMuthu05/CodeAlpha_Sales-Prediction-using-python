@@ -19,15 +19,15 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # --------------------------------------------------------
 
 df = pd.read_csv("Advertising.csv")  # Make sure this file is in your data/ folder
-print("🔍 Preview:\n", df.head())
+print(" Preview:\n", df.head())
 
 # --------------------------------------------------------
 # ✅ Step 3: Clean the Data
 # --------------------------------------------------------
 
 # Check for nulls or duplicates
-print("\n🧹 Null Values:\n", df.isnull().sum())
-print("🧹 Duplicates:", df.duplicated().sum())
+print("\n Null Values:\n", df.isnull().sum())
+print("\n Duplicates:", df.duplicated().sum())
 
 # If there's an 'Unnamed: 0' column (index column), drop it — not needed here though
 # df.drop(['Unnamed: 0'], axis=1, inplace=True)
@@ -38,7 +38,7 @@ print("🧹 Duplicates:", df.duplicated().sum())
 
 # Visualize correlations
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
-plt.title("📊 Feature Correlation Heatmap")
+plt.title(" Feature Correlation Heatmap")
 plt.show()
 
 # Drop weakly correlated features (optional)
@@ -63,7 +63,7 @@ model.fit(X_train, y_train)
 
 # Show learned coefficients
 coefficients = pd.DataFrame(model.coef_, X.columns, columns=['Coefficient'])
-print("\n📈 Feature Impact:\n", coefficients)
+print("\n Feature Impact:\n", coefficients)
 
 # --------------------------------------------------------
 # ✅ Step 7: Predict & Evaluate
@@ -77,7 +77,7 @@ mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
-print("\n📊 Model Evaluation:")
+print("\n Model Evaluation:")
 print("MAE:", round(mae, 2))
 print("MSE:", round(mse, 2))
 print("RMSE:", round(rmse, 2))
