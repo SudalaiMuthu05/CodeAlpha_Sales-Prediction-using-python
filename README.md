@@ -10,22 +10,15 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 df = pd.read_csv("Advertising.csv")  # Make sure this file is in your data/ folder
 print(" Preview:\n", df.head())
 
-# Check for nulls or duplicates
 print("\n Null Values:\n", df.isnull().sum())
 print("\n Duplicates:", df.duplicated().sum())
 
-# If there's an 'Unnamed: 0' column (index column), drop it — not needed here though
-# df.drop(['Unnamed: 0'], axis=1, inplace=True)
-
-# Visualize correlations
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
 plt.title(" Feature Correlation Heatmap")
 plt.show()
 
-# Drop weakly correlated features (optional)
 df.drop(['Newspaper'], axis=1, inplace=True)
 
-# Define input features (X) and target variable (y)
 X = df[['TV', 'Radio']]
 y = df['Sales']
 
@@ -43,7 +36,6 @@ print("\n Feature Impact:\n", coefficients)
 
 y_pred = model.predict(X_test)
 
-# Evaluation metrics
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
